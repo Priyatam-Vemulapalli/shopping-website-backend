@@ -2,11 +2,16 @@ package com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.Service;
 
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.Repository.UserRepository;
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.ApplicationUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+//will perfrom CRED operations
 @Service
 public class UserService {
-    private UserRepository userRepository=new UserRepository();
+
+    @Autowired
+    private UserRepository userRepository;
     public void registerUser(ApplicationUser applicationUser){
         //this method wants to save the user into the database.
         //so this method will call the repository layer to save the user.

@@ -15,6 +15,7 @@ public class ApplicationUser {
         this.password = password;
     }
 
+    //getters and setter methods
     public String getFirstname() {
         return firstname;
     }

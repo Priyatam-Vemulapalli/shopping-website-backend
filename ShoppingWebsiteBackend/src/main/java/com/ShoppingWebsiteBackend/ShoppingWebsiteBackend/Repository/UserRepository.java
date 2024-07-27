@@ -2,8 +2,9 @@ package com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.Repository;
 
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.ApplicationUser;
 import org.springframework.stereotype.Repository;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -21,5 +22,11 @@ public class UserRepository {
     }
     public void deleteUser(String email){
         userDB.remove(email);
+    }
+    //will return the DB object when needed
+    public HashMap<String, ApplicationUser> getUsernamesfromDB(){
+
+        return userDB;
+
     }
 }
