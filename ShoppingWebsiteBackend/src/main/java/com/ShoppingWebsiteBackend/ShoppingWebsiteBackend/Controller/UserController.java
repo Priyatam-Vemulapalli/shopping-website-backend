@@ -29,6 +29,13 @@ public class UserController {
     public String updateDetails(@RequestBody ApplicationUser applicationUser,
                                          @RequestParam String email){
         userService.updateDetailsByUserName(applicationUser,email);
-        return "updated";
+        return "updated the user details";
+    }
+
+
+    @DeleteMapping("/api/user/delete")
+    public String deleteUserByEmail(@RequestParam String email){
+        userService.deleteUserByEmail(email);
+        return "user got deleted";
     }
 }

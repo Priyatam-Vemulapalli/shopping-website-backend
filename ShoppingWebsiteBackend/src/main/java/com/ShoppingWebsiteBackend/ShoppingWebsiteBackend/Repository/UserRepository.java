@@ -19,4 +19,7 @@ public class UserRepository {
     public void updateUser(ApplicationUser applicationUser, String email){
         userDB.put(email,applicationUser);
     }
+    public void deleteUser(String email){
+        userDB.remove(email);
+    }
 }

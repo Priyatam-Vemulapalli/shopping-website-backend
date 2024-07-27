@@ -25,4 +25,9 @@ public class UserService {
     public void updateDetailsByUserName(ApplicationUser applicationUser, String email){
         userRepository.updateUser(applicationUser,email);
     }
+
+    //delete the user from repository
+    public void deleteUserByEmail(String email){
+        userRepository.deleteUser(email);
+    }
 }
