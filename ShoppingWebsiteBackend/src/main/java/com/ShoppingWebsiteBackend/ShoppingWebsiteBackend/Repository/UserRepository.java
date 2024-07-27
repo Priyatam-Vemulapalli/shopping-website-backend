@@ -1,6 +1,7 @@
 package com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.Repository;
 
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.ApplicationUser;
+import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.Item;
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,8 +26,6 @@ public class UserRepository {
     }
     //will return the DB object when needed
     public HashMap<String, ApplicationUser> getUsernamesfromDB(){
-
         return userDB;
-
     }
 }

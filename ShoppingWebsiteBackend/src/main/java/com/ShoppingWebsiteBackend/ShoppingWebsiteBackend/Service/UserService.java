@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-//will perfrom CRED operations
+//will perform CRED operations
 @Service
 public class UserService {
 
