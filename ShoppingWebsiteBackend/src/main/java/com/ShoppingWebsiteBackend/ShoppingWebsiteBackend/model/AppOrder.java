@@ -16,14 +16,18 @@ import java.util.UUID;
 @NoArgsConstructor
 public class AppOrder {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne
     private AppUser buyer;
+
     @OneToMany
     List<Product> products;
+
     @Column(nullable = false)
     int totalQuantity;
+
     @Column(nullable = false)
     int totalPrice;
 }
