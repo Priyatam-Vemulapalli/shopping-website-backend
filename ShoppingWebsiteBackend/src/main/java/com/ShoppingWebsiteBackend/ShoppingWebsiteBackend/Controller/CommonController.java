@@ -31,5 +31,5 @@ public class CommonController {
     public void registerUser(@RequestBody AppUser appuser){
         commonUserService.registerUser(appuser);
     }
-    
+
 }
