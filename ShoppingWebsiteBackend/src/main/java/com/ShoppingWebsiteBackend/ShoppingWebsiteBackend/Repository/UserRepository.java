@@ -1,52 +1,20 @@
 package com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.Repository;
 
-import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.ApplicationUser;
-import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.Cart;
-import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.Item;
+import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.AppUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
+import java.util.UUID;
 
 @Repository
-public class UserRepository {
-    //right now we are not using any database.
-    HashMap<String, ApplicationUser> userDB = new HashMap<>(); //user email, application object
+public interface UserRepository extends JpaRepository<AppUser, UUID> {
+    // Extends JpaRepository will give us the access to methods predefined in JpaRepository class,
+    // which will be helpful for the implementation of the project.
 
-    //maintains list of all carts
-    HashMap<ApplicationUser,Cart> cartDB = new HashMap<>();
+    // These methods will be able to find the user through the attributes of the user class.
+    public AppUser findByEmail(String email);
 
-    public void createUser(ApplicationUser applicationUser){
-        userDB.put(applicationUser.getEmail(),applicationUser);
-        Cart cart=new Cart(applicationUser);
-        cartDB.put(applicationUser, cart);
-    }
+    // These methods will be implemented by JPA
+    public AppUser findByphoneNumber(Long phoneNumber);
 
-    public ApplicationUser getUserByEmail(String email){
-        return userDB.get(email);
-    }
-
-    public void updateUser(ApplicationUser applicationUser, String email){
-        userDB.put(email,applicationUser);
-    }
-
-    public void deleteUser(String email){
-        userDB.remove(email);
-    }
-
-    //will return the DB object when needed
-    public HashMap<String, ApplicationUser> getUsernamesfromDB(){
-        return userDB;
-    }
-
-    public void addItemToCart(Cart cart, ApplicationUser applicationUser){
-        cartDB.put(applicationUser,cart);
-    }
-
-    public Cart getCartOfThatUser(ApplicationUser applicationUser){
-        return cartDB.get(applicationUser);
-    }
-    public void updateCart(ApplicationUser applicationUser, Cart cart){
-        cartDB.put(applicationUser,cart);
-    }
 }
