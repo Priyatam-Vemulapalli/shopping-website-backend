@@ -31,7 +31,7 @@ public class CommonUserService {
         // Verify the password present in our system is equal to the password provided by the user.
 
         AppUser user = userRepository.findByEmail(userEmail);
-        if(user==null){
+        if(user == null){
             throw new UserNotFound(String.format("User with email %s does not exist in database",userEmail));
         }
         String originalPassword=user.getPassword();
