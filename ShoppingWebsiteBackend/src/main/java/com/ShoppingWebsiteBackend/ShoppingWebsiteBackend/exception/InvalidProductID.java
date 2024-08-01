@@ -1,7 +1,6 @@
 package com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.exception;
-
-public class AccessNotFound extends RuntimeException{
-    public AccessNotFound(String message){
+public class InvalidProductID extends RuntimeException{
+    public InvalidProductID(String message){
         super(message);
     }
 }
