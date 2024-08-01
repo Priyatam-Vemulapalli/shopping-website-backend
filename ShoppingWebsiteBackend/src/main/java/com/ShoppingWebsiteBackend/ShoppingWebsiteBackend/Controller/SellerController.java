@@ -6,9 +6,11 @@ import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.exception.AcessNotFound
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.exception.InvalidProductID;
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.exception.UserNotFound;
 import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.model.Product;
+import com.ShoppingWebsiteBackend.ShoppingWebsiteBackend.responsebody.ProductResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,6 +34,10 @@ public class SellerController {
         }catch (UserNotFound | AcessNotFound | InvalidProductID userNotFound){
             return userNotFound.getMessage();
         }
+    }
+    @GetMapping("/product/all")
+    public List<ProductResponseBody> getAllProducts(@RequestParam UUID sellerID){
+        return sellerService.getAllProductsBySellerID(sellerID);
     }
 
 }
