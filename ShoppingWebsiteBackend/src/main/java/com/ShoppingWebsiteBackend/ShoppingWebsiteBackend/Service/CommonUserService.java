@@ -31,7 +31,7 @@ public class CommonUserService {
         // Verify the password present in our system is equal to the password provided by the user.
 
         AppUser user = userRepository.findByEmail(userEmail);
-        if(user==null){
+        if(user == null){
             throw new UserNotFound(String.format("User with email %s does not exist in database",userEmail));
         }
         String originalPassword=user.getPassword();
@@ -50,4 +50,16 @@ public class CommonUserService {
         userRepository.save(User);
         return "User data saved into database!";
     }
+
+    public Boolean isSeller(UUID sellerID){
+        AppUser user = getUserById(sellerID);
+        if(user == null){
+            return null;
+        }
+        // Null -> User is not existing
+        // true -> User is existing and is of seller type
+        // false -> user is existing but is of buyer type
+        return user.getUsertype().equals("SELLER");
+    }
+
 }
