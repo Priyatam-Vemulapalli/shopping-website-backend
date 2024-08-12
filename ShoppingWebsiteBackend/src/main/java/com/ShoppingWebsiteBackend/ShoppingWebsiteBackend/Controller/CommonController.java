@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.ServerRequest;
 
-@RestController
-@RequestMapping("/api/user")
+@RestController("/api/user")
 public class CommonController {
     // will handle the endpoints of all general operations which are common to buyer and seller
     //E.g. Login and signup
