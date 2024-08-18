@@ -11,6 +11,8 @@ import java.util.UUID;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID> {
 
+    public Product findByProductName(String productName);
+
     @Query(value = "select * from product where seller_id =:sellerID", // Use your dynamic variable after colon
     nativeQuery = true) // Use your own native Query instead of JPA query
     public List<Product> getAllProductsBySellerID(UUID sellerID);
@@ -39,10 +41,13 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     @Query(value = "select * from product order by price desc limit 10", nativeQuery = true)
     public List<Product> getProductInDesc();
 
-    @Query(value = "select * from product where rating =:Rating limit 10")
+    @Query(value = "select * from product where rating =:Rating limit 10", nativeQuery = true)
     public List<Product> getProductByRating(double Rating);
 
     @Query(value = "select * from product limit 10")
     public List<Product> getProductsAtRandom();
+
+    @Query(value = "update product set quantity=:quantity, total_sold_quantity=:productQuantitySold where id=:productId",nativeQuery = true)
+    public void updateProductQuantity(int quantity, UUID productName, int productQuantitySold);
 
 }
